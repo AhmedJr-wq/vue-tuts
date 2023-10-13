@@ -1,22 +1,25 @@
 <template>
   <section>
-    <header>Mayor of Kingstown</header>
+    <header>Friends Contact</header>
+    <add-friend @add-friend="addFriend"></add-friend>
     <ul>
-      <friendContact
+      <friend-contact
           v-for="friend in friends"
           :key="friend.id"
+          :id="friend.id"
           :name="friend.name"
-          :phoneNumber="friend.phone"
-          :emailAddress="friend.email"
+          :phone-number="friend.phone"
+          :email-address="friend.email"
+          @delete="deleteContact"
       >
-      </friendContact>
+      </friend-contact>
     </ul>
   </section>
 </template>
 
 
 <script>
-export default {
+    export default {
   name: 'App',
   data() {
     return {
@@ -26,33 +29,28 @@ export default {
           name: 'Manuel Lorenz',
           phone: '3345 5666 3632',
           email: 'mvfhgjgtj@l.com'
-        },
-        {
-          id: 'mayor',
-          name: 'Mayor Mitchy',
-          phone: '3345 5663 6277',
-          email: 'mvfhgjgtj@l.com'
-        },
-        {
-          id: 'mike',
-          name: 'Mike Hummels',
-          phone: '3345 7041 1484',
-          email: 'mvfhgjgtj@l.com'
-        },
-          {
-              id: 'jules',
-              name: 'Jules Milo',
-              phone: '3345 0977 1484',
-              email: 'mvfhgjgtj@l.com'
-          }
+        }
       ]
+    }
+  },
+  methods: {
+    addFriend(name, phone, email) {
+        const newContact = {
+            id: new Date().toISOString(),
+            name,
+            phone,
+            email
+        }
+      this.friends.push(newContact)
+    },
+    deleteContact(friendId) {
+        this.friends = this.friends.filter((friend) => friend.id !== friendId)
     }
   }
 }
 </script>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Jost&display=swap');
 * {
     box-sizing: border-box;
 }
@@ -84,7 +82,7 @@ header {
   list-style: none;
 }
 
-#app li {
+#app li, #app form {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   margin: 1rem auto;
   border-radius: 10px;
@@ -116,4 +114,28 @@ header {
   color: white;
   box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.26);
 }
+
+#app input {
+  font: inherit;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#app input:focus {
+  outline: none;
+  border-color: #58004d;
+}
+
+#app label {
+  font-weight: bold;
+  margin-right: 1rem;
+  width: 7rem;
+  display: inline-block;
+}
+
+#app form div {
+  margin: 1rem 0;
+}
+
 </style>

@@ -1,11 +1,12 @@
 <template>
     <li>
         <h2>{{ name }}</h2>
-        <button @click="toggleDetails">{{ showTextDetails}} details</button>
+        <button @click="toggleDetails">{{ showTextDetails }} details</button>
         <ul v-if="showDetails">
             <li><strong>Phone: </strong>{{ phoneNumber }}</li>
             <li><strong>Email: </strong>{{ emailAddress }}</li>
         </ul>
+        <button class="delete" @click="deleteFriend">Delete</button>
     </li>
 </template>
 
@@ -18,6 +19,10 @@
         //     'emailAddress'
         // ],
         props: {
+            id: {
+                type: String,
+                required: true
+            },
             name: {
                 type: String,
                 required: true,
@@ -31,6 +36,7 @@
                 required: true,
             }
         },
+        emits: ['delete'],
         data() {
             return {
                 showDetails: false
@@ -44,6 +50,9 @@
         methods: {
             toggleDetails() {
                 this.showDetails = !this.showDetails
+            },
+            deleteFriend() {
+                this.$emit('delete', this.id)
             }
         }
     }
