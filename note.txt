@@ -1,0 +1,42 @@
+v-html: use to output real HTML,eg: courseGoalB: '<h2>Master Vue and build amazing apps</h2>',
+v-bind: use inside HTML attributes when mustaches cannot be used. shorthand : eg: v-bind:href >>> :href
+v-on: use for adding event listerners, shorthand @. eg: v-on:click >>> @click 
+v-once: use to lock values
+v-model: shorthand for v-bind:value and v-on:input, also known as two-way binding because it combines data binding and event handling
+v-if: use for conditional rendering, v-else comes directly after an element with a v-if directive
+v-show: shorthand for v-if, and it is not use together with v-else
+v-for: use to render multiple elements dynamically or looping through an array or object
+
+<!-- interpolation syntax/Mustache -->
+<p>{{ outputGoal() }}</p>
+
+<!-- binding -->
+<p>Learn more <a v-bind:href="vueLink">about vue</a></p>
+
+--Methods allow you to write functions which should execute when something happens, it also takes an object.
+
+--Computed properties allow you to define complex logic that includes reactive data. It is used to output dynamic values, and it is not binded
+
+--Watch allows you to execute function when one of its dependencies or reactive state changes
+
+Differences between Methods, Computed, and Watch
+Methods
+--use with event binding and data binding
+--for data binding, it is executed for every re-render of the component
+--use for events and data that needs to be reevaluated all the time
+
+Computed
+--use with data binding
+--re-evaluated if one of their used values changed
+--use for data that depends on other data
+
+Watch
+--not used directly in the template
+--allows you to run any code in reaction to some changed data
+--use for non-data update 
+
+Dynamic Styling and classes
+<div :class="boxASelected ? 'demo active' : 'demo'" @click="selectBox('A')" ></div>
+or <div :class="{demo: true, active: boxASelected}" @click="selectBox('A')" ></div>
+or <div class="demo" :class="{active: boxASelected}" @click="selectBox('A')" ></div>
+or <div :class="['demo', {active: boxASelected}]" @click="selectBox('A')" ></div> where active is the dynamic class

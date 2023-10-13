@@ -1,0 +1,93 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    margin: 0;
+}
+
+header {
+    box-shadow: 0 2px 8px rgba(0,0,0, 0.26);
+    margin: 3rem auto;
+    border-radius: 10px;
+    padding: 1rem;
+    background-color: #4fc08d;
+    color: white;
+    text-align: center;
+    width: 90%;
+    max-width: 40rem;
+}
+
+#user-goals {
+    box-shadow: 0 2px 8px rgba(0,0,0, 0.26);
+    margin: 3rem auto;
+    border-radius: 10px;
+    padding: 1.5rem;
+    text-align: center;
+    width: 90%;
+    max-width: 40rem;
+    display: grid;
+    grid-template-columns: repeat(3fr, minmax(200px, 1fr));
+    gap: 30px;
+}
+#user-goals h2 {
+    font-size: 2rem;
+    border-bottom: 2px solid #ccc;
+    color: #4fc08d;
+    margin: 0 0 1rem 0;
+}
+
+#user-goals li {
+    font-size: 1.25rem;
+    font-weight: bold;
+    border: 1px solid #4fc08d;
+    background-color: #4fc08d;
+    color: black;
+    padding: 0.5rem;
+    border-radius: 25px;
+    list-style-type: none;
+    margin-top: 20px;
+}
+
+#user-goals li:hover {
+    cursor: pointer;
+    background-color: black;
+    color: white;
+}
+
+#user-goals input {
+    font: inherit;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 8px;
+}
+
+#user-goals input:focus {
+    outline: none;
+    border: 2px solid #4fc08d;
+    background-color: #d7fdeb;
+}
+
+#user-goals button {
+    font: inherit;
+    cursor: pointer;
+    border: 1px solid #ff0077;
+    background-color: #ff0077;
+    color: white;
+    padding: 1rem;
+    box-shadow: 1px 1px 2px rgba(0,0,0, 0.26);
+    border-radius: 10px;
+}
+
+#user-goals button:hover,
+#user-goals button:active {
+    background-color: #ec3169;
+    border-color: #ec3169;
+    box-shadow: 1px 1px 2px rgba(0,0,0, 0.26);
+    
+}
+
