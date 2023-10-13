@@ -1,25 +1,35 @@
 <template>
     <li>
-        <h2>{{ friend.name }}</h2>
-        <button @click="toggleDetails">Show details</button>
+        <h2>{{ name }}</h2>
+        <button @click="toggleDetails">{{ showTextDetails}} details</button>
+        <ul v-if="showDetails">
+            <li><strong>Phone: </strong>{{ phoneNumber }}</li>
+            <li><strong>Email: </strong>{{ emailAddress }}</li>
+        </ul>
     </li>
-    <ul v-if="showDetails">
-        <li>Phone: <strong>{{ friend.phone }}</strong></li>
-        <li>Email: <strong>{{ friend.email }}</strong></li>
-    </ul>
 </template>
 
 <script>
     export default {
+        props: [
+            'name',
+            'phoneNumber',
+            'emailAddress'
+        ],
         data() {
             return {
                 showDetails: false,
-                friend: {
-                    id: 'manuel',
-                    name: 'Manuel Lorenz',
-                    phone: '3345 56663 6277',
-                    email: 'mvfhgjgtj@l.com'
-                }
+                // friend: {
+                //     id: 'manuel',
+                //     name: 'Mayor Mitchy',
+                //     phone: '3345 56663 6277',
+                //     email: 'mvfhgjgtj@l.com'
+                // }
+            }
+        },
+        computed: {
+            showTextDetails() {
+                return this.showDetails ? 'Hide' : 'Show'
             }
         },
         methods: {
