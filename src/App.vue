@@ -3,21 +3,11 @@
     <header>Mayor of Kingstown</header>
     <ul>
       <friendContact
-          name="Manuel Lorenz"
-          phone-number="3345 5666 3652"
-          email-address="mvfhgjgtj@l.com"
-      >
-      </friendContact>
-      <friendContact
-          name="Mayor Mitchy"
-          phone-number="3345 56663 6277"
-          email-address="mvfhgjgtj@l.com"
-      >
-      </friendContact>
-      <friendContact
-          name="Mike Hummels"
-          phone-number="3345 70411 1484"
-          email-address="mvfhgjgtj@l.com"
+          v-for="friend in friends"
+          :key="friend.id"
+          :name="friend.name"
+          :phoneNumber="friend.phone"
+          :emailAddress="friend.email"
       >
       </friendContact>
     </ul>
@@ -34,21 +24,27 @@ export default {
         {
           id: 'manuel',
           name: 'Manuel Lorenz',
-          phone: '33455666362',
+          phone: '3345 5666 3632',
           email: 'mvfhgjgtj@l.com'
         },
         {
-          id: 'manuel',
-          name: 'Manuel Lorenz',
-          phone: '33455666362',
+          id: 'mayor',
+          name: 'Mayor Mitchy',
+          phone: '3345 5663 6277',
           email: 'mvfhgjgtj@l.com'
         },
         {
-          id: 'manuel',
-          name: 'Manuel Lorenz',
-          phone: '33455666362',
+          id: 'mike',
+          name: 'Mike Hummels',
+          phone: '3345 7041 1484',
           email: 'mvfhgjgtj@l.com'
-        }
+        },
+          {
+              id: 'jules',
+              name: 'Jules Milo',
+              phone: '3345 0977 1484',
+              email: 'mvfhgjgtj@l.com'
+          }
       ]
     }
   }

@@ -11,20 +11,29 @@
 
 <script>
     export default {
-        props: [
-            'name',
-            'phoneNumber',
-            'emailAddress'
-        ],
+        // props can be used either as an array or an object to specify explicitly the type of data required
+        // props: [
+        //     'name',
+        //     'phoneNumber',
+        //     'emailAddress'
+        // ],
+        props: {
+            name: {
+                type: String,
+                required: true,
+            },
+            phoneNumber: {
+                type: String,
+                required: true,
+            },
+            emailAddress: {
+                type: String,
+                required: true,
+            }
+        },
         data() {
             return {
-                showDetails: false,
-                // friend: {
-                //     id: 'manuel',
-                //     name: 'Mayor Mitchy',
-                //     phone: '3345 56663 6277',
-                //     email: 'mvfhgjgtj@l.com'
-                // }
+                showDetails: false
             }
         },
         computed: {
