@@ -6,7 +6,9 @@
 <!--    <active-goals v-if="selectedComponent === 'active-goals'"></active-goals>-->
 <!--    <manage-goals v-else></manage-goals>-->
 <!--      dynamic component-->
-      <component :is="selectedComponent"></component>
+      <keep-alive>
+        <component :is="selectedComponent" :key="selectedComponent"></component>
+      </keep-alive>
 <!--    <badge-list></badge-list>-->
 <!--    <user-info-->
 <!--      :full-name="activeUser.name"-->
