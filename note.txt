@@ -1,11 +1,12 @@
 v-html: use to output real HTML,eg: courseGoalB: '<h2>Master Vue and build amazing apps</h2>',
 v-bind: use inside HTML attributes when mustaches cannot be used. shorthand : eg: v-bind:href >>> :href
-v-on: use for adding event listerners, shorthand @. eg: v-on:click >>> @click 
+v-on: use for adding event listeners, shorthand @. eg: v-on:click >>> @click
 v-once: use to lock values
 v-model: shorthand for v-bind:value and v-on:input, also known as two-way binding because it combines data binding and event handling
 v-if: use for conditional rendering, v-else comes directly after an element with a v-if directive
 v-show: shorthand for v-if, and it is not use together with v-else
 v-for: use to render multiple elements dynamically or looping through an array or object
+v-slot: use to reference a slot name in another component, shorthand # eg: v-slot:header >>> #header
 
 <!-- interpolation syntax/Mustache -->
 <p>{{ outputGoal() }}</p>

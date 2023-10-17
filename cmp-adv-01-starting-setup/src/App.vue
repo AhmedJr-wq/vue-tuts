@@ -1,36 +1,47 @@
 <template>
   <div>
     <the-header></the-header>
-    <badge-list></badge-list>
-    <user-info
-      :full-name="activeUser.name"
-      :info-text="activeUser.description"
-      :role="activeUser.role"
-    >
-    </user-info>
-    <course-goals #default="slotProps">
-        <h2>{{ slotProps.item }}</h2>
-    </course-goals>
+      <button @click="switchComponent('active-goals')">Active Goals</button>
+      <button @click="switchComponent('manage-goals')">Manage Goals</button>
+<!--    <active-goals v-if="selectedComponent === 'active-goals'"></active-goals>-->
+<!--    <manage-goals v-else></manage-goals>-->
+<!--      dynamic component-->
+      <component :is="selectedComponent"></component>
+<!--    <badge-list></badge-list>-->
+<!--    <user-info-->
+<!--      :full-name="activeUser.name"-->
+<!--      :info-text="activeUser.description"-->
+<!--      :role="activeUser.role"-->
+<!--    >-->
+<!--    </user-info>-->
+<!--    <course-goals #default="slotProps">-->
+<!--        <h2>{{ slotProps.item }}</h2>-->
+<!--    </course-goals>-->
   </div>
 </template>
 
 <script>
 import TheHeader from "@/components/TheHeader.vue";
-import UserInfo from "@/components/UserInfo.vue";
-import BadgeList from "@/components/BadgeList.vue";
-import CourseGoals from "@/components/CourseGoals.vue";
+// import UserInfo from "@/components/UserInfo.vue";
+// import BadgeList from "@/components/BadgeList.vue";
+// import CourseGoals from "@/components/CourseGoals.vue";
+import ActiveGoals from "@/components/ActiveGoals.vue";
+import ManageGoals from "@/components/ManageGoals.vue";
 
 
 
 export default {
   components: {
       TheHeader,
-      BadgeList,
-      UserInfo,
-      CourseGoals
+      // BadgeList,
+      // UserInfo,
+      // CourseGoals,
+      ManageGoals,
+      ActiveGoals
   },
   data() {
     return {
+      selectedComponent: "active-goals",
       activeUser: {
         name: 'Maximilian Schwarzmüller',
         description: 'Site owner and admin',
@@ -38,6 +49,11 @@ export default {
       },
     };
   },
+    methods: {
+        switchComponent(cmp) {
+            this.selectedComponent = cmp;
+        }
+    }
 };
 </script>
 
