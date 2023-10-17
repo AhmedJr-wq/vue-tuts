@@ -1,10 +1,10 @@
 <template>
   <section>
     <base-card>
-        <template v-slot:header>
+        <template #header>
             <h2>Available Badges</h2>
         </template>
-        <template v-slot:default>
+        <template #default>
             <ul>
               <li>
                 <base-badge type="admin" caption="ADMIN"></base-badge>
@@ -23,6 +23,7 @@ section h2 {
   margin: 0.5rem 0;
   color: #3a3a3a;
 }
+
 ul {
   list-style: none;
   margin: 0;
