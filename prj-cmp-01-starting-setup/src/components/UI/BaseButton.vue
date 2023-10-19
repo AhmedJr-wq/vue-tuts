@@ -37,7 +37,4 @@ button:active {
     background-color: #edd2ff;
 }
 
-.circle {
-    border-radius: 50%;
-}
 </style>
