@@ -1,12 +1,14 @@
 <template>
   <form @submit.prevent="submitForm">
-    <div class="form-control">
+    <div class="form-control" :class="{invalid: nameIsInValid}">
       <label for="user-name">Your Name</label>
-      <input id="user-name" name="user-name" type="text" v-model="userName"/>
+      <input id="user-name" name="user-name" type="text" v-model.trim="userName" @blur="validateNameInput"/>
+      <p v-if="userNameValidity === 'invalid'">Can't be empty.</p>
     </div>
-    <div class="form-control">
+    <div class="form-control" :class="{invalid: ageIsInValid}">
       <label for="age">Your Age (Years)</label>
-      <input id="age" name="age" type="number" v-model="userAge"/>
+      <input id="age" name="age" type="number" v-model.number="userAge" @blur="validateAgeInput"/>
+      <p v-if="userAgeValidity === 'invalid'">Can't be empty.</p>
     </div>
     <div class="form-control">
       <label for="referrer">How did you hear about us?</label>
@@ -101,17 +103,43 @@ export default {
             referrer: 'google',
             interest: [],
             how: null,
-            confirmTerms: false
+            confirmTerms: false,
+            userNameValidity: 'pending',
+            userAgeValidity: 'pending'
+        }
+    },
+    computed: {
+        nameIsInValid() {
+            return this.userNameValidity === 'invalid';
+        },
+        ageIsInValid() {
+            return this.userAgeValidity === 'invalid';
         }
     },
     methods: {
+        validateNameInput() {
+            if(this.userName === '') {
+                this.userNameValidity = 'invalid';
+            } else {
+                this.userNameValidity = 'valid';
+            }
+        },
+        validateAgeInput() {
+            if(this.userAge === null) {
+                this.userAgeValidity = 'invalid';
+            } else {
+                this.userAgeValidity = 'valid';
+            }
+        },
         submitForm() {
-            console.log('userName:', this.userName);
-            console.log('userAge:', this.userAge);
-            console.log('referrer:', this.referrer);
-            console.log('interest:', this.interest);
-            console.log('how:', this.how);
-            console.log('confirmTerms:', this.confirmTerms);
+            this.validateNameInput();
+            this.validateAgeInput();
+            this.userName = '';
+            this.userAge = null;
+            this.referrer = 'google';
+            this.interest = [];
+            this.how = null;
+            this.confirmTerms = false;
         }
     }
 };
@@ -129,6 +157,15 @@ form {
 
 .form-control {
   margin: 0.5rem 0;
+}
+.form-control.invalid input {
+  border-color: red;
+}
+
+.form-control.invalid p {
+    font-size: 12px;
+    color: red;
+    margin-top: 5px;
 }
 
 label {
