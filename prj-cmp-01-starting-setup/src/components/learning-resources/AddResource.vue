@@ -17,21 +17,24 @@
                 <base-button type="submit">Add Resource</base-button>
             </div>
         </form>
-        <teleport to="body">
-            <error-alert v-if="inputIsInvalid">
-                <h2>Input is invalid!</h2>
-                <p>Please fill all input fields.</p>
-                <button @click="confirmError">Ok</button>
-            </error-alert>
-        </teleport>
+        <base-dialog v-if="inputIsInvalid" title="Invalid Input" @outside-click-close="confirmError">
+            <template #default>
+                <p>Unfortunately, at least one input value is invalid.</p>
+                <p>Please check all inputs and make sure you enter valid values</p>
+            </template>
+            <template #actions>
+                <base-button @click="confirmError">Okay</base-button>
+            </template>
+        </base-dialog>
     </base-card>
 </template>
 
 <script>
-import ErrorAlert from "@/components/UI/ErrorAlert.vue";
+import BaseButton from "@/components/UI/BaseButton.vue";
+import BaseDialog from "@/components/UI/BaseDialog.vue";
 
 export default {
-    components: {ErrorAlert},
+    components: {BaseDialog, BaseButton},
     inject: ['addResource'],
     data() {
         return {
@@ -44,7 +47,7 @@ export default {
             const enteredDescription = this.$refs.descInput.value;
             const enteredUrl = this.$refs.linkInput.value;
 
-            if (!enteredTitle || !enteredDescription || !enteredUrl) {
+            if (enteredTitle.trim() === '' || enteredDescription.trim() === '' || enteredUrl.trim() === '') {
                 this.inputIsInvalid = true;
             } else {
                 this.addResource(enteredTitle, enteredDescription, enteredUrl);

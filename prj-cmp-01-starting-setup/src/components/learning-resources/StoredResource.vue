@@ -6,7 +6,6 @@
             :title="resource.title"
             :description="resource.description"
             :link="resource.link"
-            @add-resource="addNewResource"
         >
         </learning-resource>
     </ul>
