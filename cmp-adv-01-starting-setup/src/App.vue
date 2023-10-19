@@ -7,7 +7,9 @@
 <!--    <manage-goals v-else></manage-goals>-->
 <!--      dynamic component-->
       <keep-alive>
-        <component :is="selectedComponent" :key="selectedComponent"></component>
+        <component :is="selectedComponent" :key="selectedComponent">
+
+        </component>
       </keep-alive>
 <!--    <badge-list></badge-list>-->
 <!--    <user-info-->

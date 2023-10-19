@@ -44,3 +44,4 @@ or <div :class="['demo', {active: boxASelected}]" @click="selectBox('A')" ></div
 
 
 Provide and Inject is used to pass data from a parent component to an ancestor child, and also to prevent prop drilling
+Slots can be used to add a placeholder for dynamic html content
