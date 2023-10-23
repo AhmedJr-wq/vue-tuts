@@ -6,6 +6,7 @@
         <base-button @click="loadExperiences">Load Submitted Experiences</base-button>
       </div>
       <p v-if="isLoading">Loading...</p>
+      <p v-else-if="!isLoading && error">{{ error }}</p>
       <p v-else-if="!isLoading && (!results || results.length === 0)">No experiences found.</p>
       <ul v-else-if="!isLoading && results && results.length > 0">
         <survey-result
@@ -30,12 +31,14 @@ export default {
   data() {
     return {
         results: [],
-        isLoading: false
+        isLoading: false,
+        error: null
     }
   },
   methods: {
       loadExperiences() {
         this.isLoading = true
+        this.error = null
         axios.get('https://vue-tuts-http-demo-default-rtdb.firebaseio.com/surveys.json')
             .then(response => {
                 if (response.status === 200) {
@@ -58,7 +61,8 @@ export default {
                 this.results = results;
             })
             .catch(error => {
-                console.error(error);
+                this.isLoading = false;
+                this.error = 'Error fetching data: ' + error.message;
             });
       },
   },
