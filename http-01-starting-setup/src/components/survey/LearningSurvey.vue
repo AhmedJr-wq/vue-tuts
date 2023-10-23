@@ -62,7 +62,7 @@ export default {
       //   rating: this.chosenRating,
       // });
 
-        axios.post('https://vue-http-demo-85e9e.firebaseio.com/surveys.json', {
+        axios.post('https://vue-tuts-http-demo-default-rtdb.firebaseio.com/surveys.json', {
             name: this.enteredName,
             rating: this.chosenRating,
         });
