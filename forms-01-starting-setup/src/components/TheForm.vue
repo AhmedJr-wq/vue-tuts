@@ -85,7 +85,7 @@
       </div>
     </div>
     <div class="form-control">
-      <rating-control></rating-control>
+      <rating-control v-model="rating"></rating-control>
     </div>
 
     <div class="form-control">
@@ -113,6 +113,7 @@ export default {
             interest: [],
             how: null,
             confirmTerms: false,
+            rating: null,
             userNameValidity: 'pending',
             userAgeValidity: 'pending'
         }
@@ -143,12 +144,20 @@ export default {
         submitForm() {
             // this.validateNameInput();
             // this.validateAgeInput();
-            // this.userName = '';
-            // this.userAge = null;
-            // this.referrer = 'google';
-            // this.interest = [];
-            // this.how = null;
-            // this.confirmTerms = false;
+            console.log(this.userName);
+            this.userName = '';
+            console.log(this.userAge);
+            this.userAge = null;
+            console.log(this.referrer);
+            this.referrer = 'google';
+            console.log(this.interest);
+            this.interest = [];
+            console.log(this.how);
+            this.how = null;
+            console.log(this.confirmTerms);
+            this.confirmTerms = false;
+            console.log(this.rating);
+            this.rating = null;
         }
     }
 };
