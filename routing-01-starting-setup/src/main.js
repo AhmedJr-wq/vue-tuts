@@ -16,10 +16,7 @@ const router = createRouter({
         {
             name: 'teams',
             path: '/teams',
-            components: {
-                default: TeamsList,
-                footer: TeamsFooter
-            },
+            components: { default: TeamsList, footer: TeamsFooter },
             children: [
                 { name: 'team-members', path: ':teamId', component: TeamMembers }
             ]
@@ -40,6 +37,13 @@ const router = createRouter({
         }
     }
 })
+
+//navigation guard
+// router.beforeEach((to, from, next) => {
+//     console.log('Global beforeEach');
+//     console.log(to, from);
+//     next();
+// })
 
 const app = createApp(App)
 
